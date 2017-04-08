@@ -16,15 +16,24 @@ if (isset($user)) {
 function showCode(){
 include ('html_form.html');
 
-	$obj = new Memcached();
-	$obj->addServer('localhost', 11211);
-	
+$obj = new Memcached();
+$obj->addServer('localhost', 11211);
+/* OLD
 if (!isset($obj)){
 	for ($i=1; $i<=1000; $i++){
 		if (IsPrime($i) )
 		$obj->set($i, $i);
 	}
 }
+*/
+if ($obj->get(1) == false){
+	for ($i=1; $i<=1000; $i++){
+		if (IsPrime($i) )
+		$obj->set($i, $i);
+	}
+}
+
+
 // Hey if you want to flush memcach, please uncomment this
 //memcache_flush($obj);
 

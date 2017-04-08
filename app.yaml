@@ -1,8 +1,7 @@
-application: Prime
-version: 1
 runtime: php55
 api_version: 1
 
 handlers:
-- url: /.*
+# Serve php scripts.
+- url: /
   script: prime.php
